@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Stack, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from 'react';
+import { Stack, Text } from '@chakra-ui/react';
 
 interface ProductUrl {
 	productUrl: string;
@@ -8,17 +8,17 @@ interface ProductUrl {
 const ResultHeader: React.FC<ProductUrl> = ({ productUrl }) => {
 	const [categories, setCategories] = useState([]);
 
-	const [error, setError] = useState(false);
+	const [error, setError] = useState<Error>();
 
 	useEffect(() => {
 		fetch(productUrl)
-			.then((response) => response.json())
+			.then((response: Response) => response.json())
 			.then((data) => {
 				setCategories(data.categories);
 			})
-			.catch((error: any) => {
+			.catch((error: Error) => {
 				// Guardamos el error en una variable
-				console.log("error", error);
+				console.log('error', error);
 				setError(error);
 			});
 	}, [productUrl]);
@@ -35,7 +35,7 @@ const ResultHeader: React.FC<ProductUrl> = ({ productUrl }) => {
 				</>
 			)}
 			<Stack marginBlockEnd={2} paddingBlockStart={5} spacing={5}>
-				<Text fontSize="14px">{categories?.join(" > ")}</Text>
+				<Text fontSize="14px">{categories?.join(' > ')}</Text>
 			</Stack>
 		</>
 	);

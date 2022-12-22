@@ -1,18 +1,25 @@
-import { Stack, Text } from '@chakra-ui/react'
-import React from 'react'
-import { Product } from '../../types'
+import { Stack, Text } from '@chakra-ui/react';
+import React from 'react';
 
-const ProductDescription: React.FC<Product> = ({productId}) => {
-
-  console.log('productDescription', productId)
-  return (
-    <>
-        <Stack paddingInlineStart="40px" paddingInlineEnd="500px">
-            <Text fontSize="24px" color="black">Descripción del producto</Text>
-            <Text> {productId.description}</Text>
-        </Stack>
-    </>
-  )
+interface ItemDescription {
+	description: string;
+}
+interface PropProduct {
+	productId: ItemDescription | undefined;
 }
 
-export default ProductDescription
+const ProductDescription: React.FC<PropProduct> = ({ productId }) => {
+	console.log('productDescription', productId);
+	return (
+		<>
+			<Stack paddingInlineStart="40px" paddingInlineEnd="500px">
+				<Text fontSize="24px" color="black">
+					Descripción del producto
+				</Text>
+				<Text> {productId?.description}</Text>
+			</Stack>
+		</>
+	);
+};
+
+export default ProductDescription;

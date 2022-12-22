@@ -1,11 +1,11 @@
-import { Image, Stack, Text } from "@chakra-ui/react";
-import React from "react";
-import { Link } from "react-router-dom";
-import formatPrice from "../../../utils/formatPrice";
-import { Product } from "../../types";
+import { Image, Stack, Text } from '@chakra-ui/react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import formatPrice from '../../../utils/formatPrice';
+import { Product } from '../../types';
 
 interface DescriptionProps {
-	product: Product;
+	product: Product[];
 }
 
 const ItemDescription: React.FC<DescriptionProps> = ({ product }) => {
@@ -24,7 +24,12 @@ const ItemDescription: React.FC<DescriptionProps> = ({ product }) => {
 						paddingBlockStart={2}
 					>
 						<Link to={`/items/${product.id}`}>
-							<Image fit="contain" src={product.picture} height="160px" width="160px" />
+							<Image
+								fit="contain"
+								src={product.picture}
+								height="160px"
+								width="160px"
+							/>
 						</Link>
 						<Stack width="100%">
 							<Text fontSize="20px" fontWeight="300px">
@@ -41,7 +46,11 @@ const ItemDescription: React.FC<DescriptionProps> = ({ product }) => {
 										<Text fontSize="20px">{product.title}</Text>
 									</Link>
 								</Stack>
-								<Text paddingInlineEnd={20} fontSize="14px" color="blackAlpha.700">
+								<Text
+									paddingInlineEnd={20}
+									fontSize="14px"
+									color="blackAlpha.700"
+								>
 									{product.address}
 								</Text>
 							</Stack>

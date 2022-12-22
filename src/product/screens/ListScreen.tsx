@@ -1,32 +1,34 @@
-import { Stack, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Stack, Text } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 
-import { Product } from "../types";
-import ItemDescription from "./subcomponents/ItemDescription";
-import ResultHeader from "./subcomponents/ResultHeader";
+import { Product } from '../types';
+import ItemDescription from './subcomponents/ItemDescription';
+import ResultHeader from './subcomponents/ResultHeader';
+
+import { Location } from 'history';
 
 interface Props {
 	product: Product;
-	location: any;
+	location: Location;
 }
 
 const ListScreen: React.FC<Props> = (props: Props) => {
-	const [error, setError] = useState(false);
+	const [error, setError] = useState<Error>();
 	const [products, setProducts] = useState([]);
-	const search = new URLSearchParams(props.location.search).get("search");
+	const search = new URLSearchParams(props.location.search).get('search');
 
 	const url = `http://localhost:3001/api/items?q=${search}`;
 
 	useEffect(() => {
 		if (search) {
 			fetch(url)
-				.then((response) => response.json())
+				.then((response: Response) => response.json())
 				.then((data) => {
 					setProducts(data.items);
 				})
-				.catch((error: any) => {
+				.catch((error: Error) => {
 					// Guardamos el error en una variable
-					console.log("error", error);
+					console.log('error', error);
 					setError(error);
 				});
 		}

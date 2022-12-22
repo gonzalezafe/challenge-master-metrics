@@ -1,10 +1,15 @@
-import { Button, Stack, Text } from "@chakra-ui/react";
-import React from "react";
-import formatPrice from "../../../utils/formatPrice";
-import { Product } from "../../types";
-
+import { Button, Stack, Text } from '@chakra-ui/react';
+import React from 'react';
+import formatPrice from '../../../utils/formatPrice';
+import { Price } from '../../types';
+interface PropProduct {
+	price: Price;
+	condition: string;
+	sold_quantity: number;
+	title: string;
+}
 interface CharacteristicsProps {
-	productId: Product;
+	productId: PropProduct | any;
 }
 
 const CharacteristicsBuyItem: React.FC<CharacteristicsProps> = ({ productId }) => {
@@ -12,7 +17,7 @@ const CharacteristicsBuyItem: React.FC<CharacteristicsProps> = ({ productId }) =
 		<>
 			<Stack paddingInlineStart="40px" maxWidth="400px">
 				<Text color="blackAlpha.700">
-					{productId.condition} | {productId.sold_quantity} vendidos{" "}
+					{productId.condition} | {productId.sold_quantity} vendidos{' '}
 				</Text>
 				<Text fontSize="22px" fontWeight="600">
 					{productId.title}

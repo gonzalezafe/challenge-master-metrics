@@ -34,8 +34,6 @@ const ItemDetails: React.FC = () => {
 
 	const [error, setError] = useState<Error>();
 
-	console.log('product', productId);
-
 	useEffect(() => {
 		fetch(urlId)
 			.then((response: Response) => response.json())

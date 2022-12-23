@@ -9,7 +9,6 @@ interface PropProduct {
 }
 
 const ProductDescription: React.FC<PropProduct> = ({ productId }) => {
-	console.log('productDescription', productId);
 	return (
 		<>
 			<Stack paddingInlineStart="40px" paddingInlineEnd="500px">
